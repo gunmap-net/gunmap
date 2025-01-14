@@ -1,0 +1,949 @@
+/* INSPIRATION: https://jdan.github.io/98.css/ */
+
+:root {
+  --light-gray: #9f9f9f;
+  --med-gray: #676767;
+  --dark-gray: #474747;
+  --green: #33423b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 17px;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--button-face);
+}
+
+::-webkit-scrollbar-track {
+	background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg width='2' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 0H0v1h1v1h1V1H1V0z' fill='silver'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 0H1v1H0v1h1V1h1V0z' fill='%23fff'/%3E%3C/svg%3E);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #dfdfdf; 
+	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment,
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:vertical:end:increment {
+  display: block;
+}
+
+::-webkit-scrollbar-button:vertical:start {
+  height: 17px;
+  background-image: svg-load("./icon/button-up.svg");
+}
+::-webkit-scrollbar-button:vertical:end {
+  height: 17px;
+  background-image: svg-load("./icon/button-down.svg");
+}
+::-webkit-scrollbar-button:horizontal:start {
+  width: 16px;
+  background-image: svg-load("./icon/button-left.svg");
+}
+::-webkit-scrollbar-button:horizontal:end {
+  width: 16px;
+  background-image: svg-load("./icon/button-right.svg");
+}*/
+
+@font-face {
+  font-family: "Fixedsys Excelsior";
+  src: url("/fonts/fsex300-webfont.ttf");
+}
+
+.hidden {
+  display: none !important;
+}
+
+.noise {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W/Rgjda1iqQcOJu2WW+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP+ttrq+AsWpFG2awvsuOqbipWHgtuvuaAE+A1Z/7gC9hesnr+7wqCwG8c5yAg3AL1fm8T9AZtp/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip/ppIhA1/mSZ/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p+tktDYYSNflcxI0iyO4TPBdlRcpeqjK/piF5bklq77VSEaA+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK+/q/AWR0tJzYHRULOa4MP+W/HfGadZUbfw177G7j/OGbIs8TahLyynl4X4RinF793Oz+BU0saXtUHrVBFT/DnA3ctNPoGbs4hRIjTok8i+algT1lTHi4SxFvONKNrgQFAq2/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq+f8XN+A5eeUKHWvJWJ2sgJ1Sop+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5+LbVT99wqTdx29lMUH4OIG/D86ruKEauBjvH5xy6um/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp/3fEV5a+4wz//6qy8JxjZsmxxy5+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt+4/wuqcXY47QILbgAAAABJRU5ErkJggg==);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px auto;
+  background-image: url('/images/gunmap_background.png');
+  font-family: "Fixedsys Excelsior";
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  scrollbar-color: black white;
+  display: flex;
+  flex-direction: column;
+}
+
+.gunmap-panel {
+  background-color: var(--dark-gray);
+  filter: drop-shadow(12px 12px);
+  border: 1px solid var(--med-gray);
+  margin: 0px auto;
+}
+
+.gunmap-panel#search {
+  max-width: 500px;
+  width: 90%;
+}
+
+#homepage_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#homepage_wrapper #gunmap_title {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+.gunmap-panel#recent-items {
+  width: 90%;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.gunmap-panel-header {
+  background-color: var(--light-gray);
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.gunmap-panel-header-inner {
+  padding: 5px;
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.gunmap-panel-body {
+  text-align: center;
+  padding: 10px 5px;
+}
+
+.gunmap-panel-input-wrapper {
+  margin: 5px auto;
+  max-width: 400px;
+  background-color: #fff;
+  border-top: 1px solid var(--med-gray);
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.gunmap-panel-input-wrapper-pre {
+  width: 50px;
+}
+
+.gunmap-panel-input-wrapper-2 {
+  border-top: 1px solid var(--dark-gray);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.gunmap-panel-input-wrapper-3 {
+  border-top: 1px solid var(--med-gray);
+  border-bottom: 1px solid var(--dark-gray);
+  align-items: center;
+}
+
+.gunmap-panel-input-wrapper input[type="text"] {
+  flex-grow: 1;
+  width: 100%;
+  font-family: "Fixedsys Excelsior";
+  text-transform: uppercase;
+  padding: 4px 0px 4px 10px;
+  border: 0;
+}
+
+.gunmap-panel-input-wrapper input[type="text"]:focus {
+  outline: none;
+}
+
+.gunmap-panel-input-wrapper input[type="submit"] {
+  min-width: 50px;
+  width: 100%;
+  border: 0;
+  padding: 4px 20px;
+  font-family: "Fixedsys Excelsior";
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+}
+
+.gunmap-panel-input-wrapper.submit {
+  display: inline-block;
+  filter: drop-shadow(4px 4px);
+}
+
+.gunmap-panel-input-wrapper.submit.green {
+  background-color: var(--green);
+}
+
+.gunmap-panel-input-wrapper.submit.green input {
+  color: #fff;
+}
+
+.gunmap-panel-input-wrapper.submit:active {
+  background: #000;
+  color: #fff;
+  filter: drop-shadow(4px 4px white);
+}
+
+.gunmap-panel-input-wrapper.submit:active input {
+  color: #fff;
+}
+
+#recent-items .gunmap-panel-body {
+  /*justify-content: center;*/
+  padding: 20px 10px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.gunmap-subpanel {
+  border: 1px solid var(--light-gray);
+  padding: 15px;
+  position: initial;
+  margin: 0 10px;
+}
+
+.single-result-download-button input[type="submit"] {
+  width: 100%;
+}
+
+.gunmap-subpanel .gunmap-subpanel-title {
+  display: block;
+  color: #fff;
+  margin: -25px auto 7px auto;
+  background-color: var(--dark-gray);
+  padding: 0 20px;
+}
+
+#recent-items .gunmap-panel-body {
+  padding: 20px 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.gunmap-panel-list-wrapper {
+  border-left: 2px solid var(--med-gray);
+  border-top: 2px solid var(--med-gray);
+  border-right: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  background: #fff;
+  width: 100%;
+}
+
+.gunmap-panel-list-wrapper .gunmap-panel-list-wrapper-2 {
+  border-left: 2px solid var(--dark-gray);
+  border-top: 2px solid var(--dark-gray);
+  border-right: 2px solid var(--med-gray);
+  border-bottom: 2px solid var(--med-gray);
+  background: #fff;
+}
+
+.gunmap-panel-list {
+  background: #fff;
+  padding-bottom: 5px;
+  height: 100%;
+}
+
+.gunmap-panel-list-wrapper .gunmap-panel-list .gunmap-panel-list-item {
+  padding: 5px 10px 10px 10px;
+  text-align: left;
+  font-size: 18px;
+}
+
+.gunmap-panel-list-wrapper .gunmap-panel-list .gunmap-panel-list-item.gunmap-panel-list-item-selected {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.gunmap-panel-list-wrapper .gunmap-panel-list .gunmap-panel-list-item:last-child {
+  padding-bottom: 0;
+}
+
+#page-content {
+  max-width: 2000px;
+  margin: 0px auto 20px auto;
+  flex: 1;
+  width: 100%;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* === FOOTER ========================================= */
+
+#footer-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  /*text-align: right;*/
+  z-index: 9999;
+  /*position: fixed;
+  bottom: 0;*/
+}
+
+#footer {
+  text-align: left;
+  display: inline-block;
+  background-color: var(--light-gray);
+  padding: 0 15px;
+  border-bottom: 1px solid var(--med-gray);
+  position: absolute;
+  right: 0;
+  bottom: 41px;
+}
+
+#footer-mobile {
+  background-color: var(--light-gray);
+  padding: 0 10px;
+  border-top: 1px solid #ccc;
+  display: flex;
+}
+
+#footer-mobile #footer-mobile-results,
+#footer-mobile #footer-mobile-filter {
+  margin-left: 0;
+}
+
+#footer-mobile .gunmap-panel-input-wrapper.submit {
+  margin-bottom: 8px;
+}
+
+#footer-mobile #footer-mobile-menu {
+  margin-right: 0;
+}
+
+#footer a {
+  color: #000;
+  text-decoration: none;
+}
+
+#footer p a {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+}
+
+#footer a span.letter-highlight {
+  text-decoration: underline;
+}
+
+#footer p img {
+  margin-right: 10px;
+  width: 30px;
+}
+
+#footer p:first-child {
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+#footer p:last-child {
+  padding-bottom: 10px;
+  margin-bottom: 0;
+}
+
+#footer #footer-left {
+  border-bottom: 1px solid var(--med-gray);
+}
+
+#footer #footer-right {
+  border-top: 1px solid #ccc;
+}
+
+#footer #footer-right #footer-right-divider {
+  display: none;
+}
+
+@media(min-width: 700px) {
+  #footer-mobile {
+    display: none; 
+  }
+
+  #footer {
+    display: flex !important;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+  }
+
+  #footer a span.letter-highlight {
+    background-color: #000;
+    color: #fff;
+    padding: 0 2px 0 3px;
+  }
+
+  #footer #footer-left {
+    display: flex;
+    border: 0;
+  }
+
+  #footer #footer-left p {
+    margin: 0 7px;
+  }
+
+  #footer p:first-child {
+    padding-top: 0px;
+  }
+
+  #footer p:last-child {
+    padding-bottom: 0px;
+  }
+
+  #footer #footer-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    border: 0;
+  }
+
+  #footer p img {
+    display: none;
+  }
+
+  #footer #footer-right p {
+    margin: 0 5px;
+  }
+
+  #footer #footer-right #footer-right-divider {
+    display: block;
+  }
+}
+
+/* === LIBRARY PAGE ========================================= */
+
+#library-page {
+  width: 97%;
+  height: 100%;
+  margin: 0px auto;
+}
+
+#library-page #filter-panel .gunmap-panel-body {
+  height: 100%; 
+	min-height: 1px;
+  margin: 10px;
+  padding: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows {
+  height: 100%;
+	overflow-y: auto;
+	padding-right: 5px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter {
+	margin-bottom: 10px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter.minimized .narrowing_filter_content {
+  display: none;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter:last-child {
+	margin-bottom: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter.selected .gunmap-panel-list {
+  padding-bottom: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter.selected .narrowing_filter_search {
+  display: none;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .gunmap-panel-list-item {
+	padding: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .gunmap-panel-list-item {
+	max-height: 92px;
+	overflow-y: auto;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_title {
+	background-color: var(--green);
+	margin: 1px;
+	color: #fff;
+	text-align: left;
+	font-size: 18px;
+	padding: 5px 5px 5px 12px;
+	display: flex;
+	align-items: center;
+  cursor: pointer;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_title button.minimize-button {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='6' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23000' d='M0 0h6v2H0z'/%3E%3C/svg%3E");
+	background-position: bottom 3px left 5px;
+	background-repeat: no-repeat;
+	display: block;
+	min-height: 14px;
+	min-width: 16px;
+	padding: 0;
+	background-color: var(--light-gray);
+	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+	border: none;
+	border-radius: 0;
+	box-sizing: border-box;
+	color: transparent;
+	text-shadow: 0 0 #222;
+	margin-left: auto;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter.minimized .narrowing_filter_title button.minimize-button {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='9' height='9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 0H0v9h9V0zM8 2H1v6h7V2z' fill='%23000'/%3E%3C/svg%3E");
+	background-position: bottom 3px left 3px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_title button.minimize-button:active {
+	box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+	text-shadow: 1px 1px #222;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option {
+	padding: 5px 10px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option:has(input:checked) {
+	background-color: var(--green);
+	color: #fff;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option:last-child {
+	padding-bottom: 0px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option input[type=checkbox] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: 0;
+	border: none;
+	margin: 0;
+	opacity: 0;
+	position: fixed;	
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option input[type=checkbox]+label {
+	margin-left: 19px;
+	position: relative;
+	line-height: 13px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option input[type=checkbox]+label:before {
+	background: #fff;
+	box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+	content: "";
+	display: inline-block;
+	height: 13px;
+	left: -19px;
+	margin-right: 6px;
+	position: absolute;
+	width: 13px;
+  top: 2px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_option input[type=checkbox]:checked+label:after {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 0H6v1H5v1H4v1H3v1H2V3H1V2H0v3h1v1h1v1h1V6h1V5h1V4h1V3h1V0z' fill='%23000'/%3E%3C/svg%3E");
+	content: "";
+	display: block;
+	height: 7px;
+	left: -16px;
+	position: absolute;
+	top: 6px;
+	width: 7px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_search {
+	margin-top: 0;
+	border-right: 1px solid var(--light-gray);
+	border-left: 2px solid var(--med-gray);
+	border-top: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_search .gunmap-panel-input-wrapper-2 {
+	border-left: 2px solid var(--dark-gray);
+	border-right: 2px solid var(--med-gray);
+	border-top: 0;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_search .gunmap-panel-input-wrapper-pre {
+	width: 30px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .narrowing_filter_search input {
+	padding: 0;
+	font-size: 18px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_narrows .gunmap-panel-list {
+  height: auto;
+  min-height: 23px;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_buttons .gunmap-panel-input-wrapper.submit {
+  width: 100%;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_buttons .gunmap-panel-input-wrapper.submit:first-child {
+  /*background: var(--green);*/
+  margin-right: 5px;
+}
+
+/*#library-page #filter-panel .gunmap-panel-body div#filter_buttons .gunmap-panel-input-wrapper.submit:first-child input {
+  background: none;
+}
+
+#library-page #filter-panel .gunmap-panel-body div#filter_buttons .gunmap-panel-input-wrapper.submit:first-child:active {
+  background: #000;
+}*/
+
+#library-page #filter-panel .gunmap-panel-body div#filter_buttons .gunmap-panel-input-wrapper.submit:last-child {
+  margin-left: 5px;
+}
+
+#library-page #results-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+#library-page #results-panel .gunmap-panel-header .gunmap-panel-header-inner {
+  display: flex;
+}
+
+#library-page #results-panel .gunmap-panel-body {
+  height: 100%;
+  overflow-y: auto;
+  margin: 10px;
+}
+
+#library-page #results-panel .gunmap-panel-body a {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+#library-page #results-panel .gunmap-thumbnail {
+  width: 355.55px; 
+  height: 200px; 
+  background-color: #fff;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* === PROJECT PAGE ========================================= */
+
+#project-page {
+  width: 97%;
+  height: 100%;
+  margin: 0px auto;
+}
+
+.left-sidebar {
+  width: 300px;
+  margin-right: 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	bottom: 41px;
+  filter: none;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+#project-page .left-sidebar .gunmap-panel-body {
+  margin: 10px;
+  padding: 0 0 48px 0;
+  height: 100%;
+  min-height: 1px;
+}
+
+#project-page #results-panel .gunmap-panel-body .gunmap-panel-list-wrapper-2 {
+  overflow-y: auto;
+  height: 100%;
+}
+
+#project-page #results-panel .gunmap-panel-list .gunmap-panel-list-item {
+}
+
+#project-page #results-panel .gunmap-panel-list img {
+  height: 18px;
+  margin-right: 9px;
+}
+
+#project-page #results-panel .gunmap-panel-list .gunmap-panel-list-item-selected img {
+  height: 22px;
+  margin-left: -2px;
+  margin-right: 7px;
+}
+
+#project-page #single-result-panel {
+  flex: 1;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#project-page #single-result-panel .gunmap-panel-body {
+  flex: 1;
+  min-height: 1px;
+}
+
+#project-page #single-result-panel #single-result-panel-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-width: 1px;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-result-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 1;
+  flex: 1;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-image {
+  height: 50%;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details {
+  margin-top: 20px;
+  height: 50%;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details .gunmap-subpanel-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details .gunmap-subpanel-body .single-panel-details-panel-wrapper {
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details .gunmap-subpanel-body .single-panel-details-panel {
+  margin-top: 0;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-description {
+  margin-top: 20px;
+  color: #fff;
+  flex: 1;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-description #description {
+  text-align: left;
+  overflow-y: auto;
+  scrollbar-color: black white;
+  padding-right: 10px;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-description #description p:first-child {
+  margin-top: 0;
+}
+
+#project-page #single-result-panel #single-result-panel-left #single-result-description #description p:last-child {
+  margin-bottom: 0;
+}
+
+#project-page #single-result-panel #single-result-panel-right {
+  flex: 0 0 325px;
+  display: none;
+}
+
+#project-page #single-result-panel .single-result-details {
+  flex: 1;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details .single-result-details-buttons {
+  display: flex;
+}
+
+#project-page #single-result-panel #single-result-panel-left .single-result-details .single-result-details-buttons .single-result-download-button {
+  margin: 0 5px;
+}
+
+#project-page #single-result-panel #single-result-panel-right .single-result-details {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.single-result-download-button input[type="submit"] {
+  width: 100%;
+}
+
+.single-panel-details-panel {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.single-panel-details-panel .single-panel-details-detail-wrapper {
+  display: inline-block;
+  margin: 5px 10px 5px 5px;
+}
+
+.single-panel-details-panel .single-panel-details-detail {
+  color: #fff;
+  display: flex;
+}
+
+.single-panel-details-panel .single-panel-details-detail .single-panel-details-detail-title {
+  margin-right: 10px;
+}
+
+.single-panel-details-panel .single-panel-details-detail .single-panel-details-detail-content {
+  margin-right: 5px;
+}
+
+.single-panel-details-panel .single-panel-details-detail .single-panel-details-detail-content span {
+  background: var(--green);
+  padding: 0 2px;
+}
+
+/*.single-panel-details-panel .single-panel-details-detail .single-panel-details-detail-content span:first-child {
+  padding-left: 0;
+}
+
+.single-panel-details-panel .single-panel-details-detail .single-panel-details-detail-content span:last-child {
+  padding-right: 0;
+}*/
+
+@media(min-width: 400px) {
+
+  #homepage_wrapper #gunmap_title {
+    font-size: 18px;
+  }
+
+  #project-page #single-result-panel-left #single-result-panel .single-result-details .single-result-details-buttons .single-result-download-button {
+    margin: 0 10px;
+  }
+}
+
+@media(min-width: 500px) {
+
+  #homepage_wrapper #gunmap_title {
+    font-size: 24px;
+  }
+}
+
+@media(min-width: 700px) {
+
+  body {
+    font-size: 20px;
+  }
+
+  #homepage_wrapper #gunmap_title {
+    font-size: 32px;
+  }
+
+  #page-content {
+    margin-top: 10px;
+  }
+
+  .gunmap-panel-body {
+    margin: 10px 20px;
+  }
+
+  #project-page #single-result-panel #single-result-panel-left #single-result-image {
+    height: 50%;
+  }
+
+  .gunmap-panel-input-wrapper input[type="submit"] {
+    font-size: 20px;
+  }
+
+  .gunmap-panel-input-wrapper input[type="text"] {
+    font-size: 20px;
+  }
+
+  .gunmap-subpanel .gunmap-subpanel-title {
+    font-size: 20px;
+  }
+
+	.left-sidebar {
+    display: flex !important;
+		position: relative;
+    flex-direction: column;
+    filter: drop-shadow(12px 12px);
+    border: none;
+	}
+
+  .left-sidebar .gunmap-panel-body {
+    padding-bottom: 0;
+  }
+
+  #project-page #single-result-panel #single-result-panel-left #single-result-description #description p:first-child {
+    margin-top: 10px;
+  }
+
+  #project-page #single-result-panel #single-result-panel-left #single-result-description #description p:last-child {
+    margin-bottom: 10px;
+  }
+
+  #project-page .left-sidebar .gunmap-panel-body {
+    padding-bottom: 0;
+  }
+}
+
+@media(min-width: 1100px) {
+  #project-page #single-result-panel #single-result-panel-left .single-result-details {
+    display: none;
+  }
+
+  #project-page #single-result-panel #single-result-panel-right {
+    display: block;
+  }
+}
+
+
+

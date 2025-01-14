@@ -1,0 +1,427 @@
+{{ define "main" }}
+<script src="/js/sql-wasm.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>-->
+<script src="/js/library_page.js"></script>
+<!--<h1>{{ .Title }}</h1>-->
+<div id="search_wrapper">
+  <!--<input id="search" placeholder="Search..."></input>-->
+  <!--<button id="search_button">Submit</button>
+  <button id="clear_all_button">Clear All</button>-->
+</div>
+<div id="filter_wrapper"></div>
+<div id="entity_list"></div>
+<div id="pager"></div>
+
+<div id="library-page" class="flex-row">
+  <div id="filter-panel" class="hidden left-sidebar gunmap-panel noise">
+    <div class="gunmap-panel-header noise">
+      <div class="gunmap-panel-header-inner">
+        GUNMAP
+      </div>
+    </div>
+    <div class="gunmap-panel-body flex-column">
+      <div id="filter_narrows">
+        <!--<div class="narrowing_filter">
+          <div class="narrowing_filter_title">
+            <span>GUNMAP Category</span>
+            <button class="minimize-button"></button>
+          </div>
+          <div class="narrowing_filter_content">
+            <div class="gunmap-panel-list-wrapper">
+              <div class="gunmap-panel-list-wrapper-2">
+                <div class="gunmap-panel-list flex-column">
+                  <div class="gunmap-panel-list-item flex-column">
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_1">
+                      <label for="gunmap_category_1">DIY Firearms</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_2">
+                      <label for="gunmap_category_2">Magazines</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_3">
+                      <label for="gunmap_category_3">Suppressor</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_4">
+                      <label for="gunmap_category_4">Education</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_5">
+                      <label for="gunmap_category_5">Art</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="gunmap_category_6">
+                      <label for="gunmap_category_6">Traditional Firearms</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="narrowing_filter_search gunmap-panel-input-wrapper text">
+              <div class="gunmap-panel-input-wrapper-2">
+                <div class="gunmap-panel-input-wrapper-3 flex-row">
+                  <div class="gunmap-panel-input-wrapper-pre">
+                    >
+                  </div>
+                  <input class="narrow_filter_search" type="text"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="narrowing_filter minimized">
+          <div class="narrowing_filter_title">
+            <span>Munition Type</span>
+            <button class="minimize-button"></button>
+          </div>
+          <div class="narrowing_filter_content">
+            <div class="gunmap-panel-list-wrapper">
+              <div class="gunmap-panel-list-wrapper-2">
+                <div class="gunmap-panel-list flex-column">
+                  <div class="gunmap-panel-list-item flex-column">
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_1">
+                      <label for="munition_type_1">Example 1</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_2">
+                      <label for="munition_type_2">Example 2</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_3">
+                      <label for="munition_type_3">Example 3</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_4">
+                      <label for="munition_type_4">Example 4</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_5">
+                      <label for="munition_type_5">Example 5</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_type_6">
+                      <label for="munition_type_6">Example 6</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="narrowing_filter_search gunmap-panel-input-wrapper text">
+              <div class="gunmap-panel-input-wrapper-2">
+                <div class="gunmap-panel-input-wrapper-3 flex-row">
+                  <div class="gunmap-panel-input-wrapper-pre">
+                    >
+                  </div>
+                  <input id="search" class="narrow_filter_search" type="text"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>              
+        <div class="narrowing_filter minimized">
+          <div class="narrowing_filter_title">
+            <span>Munition Platform</span>
+            <button class="minimize-button"></button>
+          </div>
+          <div class="narrowing_filter_content">
+            <div class="gunmap-panel-list-wrapper">
+              <div class="gunmap-panel-list-wrapper-2">
+                <div class="gunmap-panel-list flex-column">
+                  <div class="gunmap-panel-list-item flex-column">
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_1">
+                      <label for="munition_platform_1">Example 1</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_2">
+                      <label for="munition_platform_2">Example 2</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_3">
+                      <label for="munition_platform_3">Example 3</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_4">
+                      <label for="munition_platform_4">Example 4</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_5">
+                      <label for="munition_platform_5">Example 5</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_platform_6">
+                      <label for="munition_platform_6">Example 6</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="narrowing_filter_search gunmap-panel-input-wrapper text">
+              <div class="gunmap-panel-input-wrapper-2">
+                <div class="gunmap-panel-input-wrapper-3 flex-row">
+                  <div class="gunmap-panel-input-wrapper-pre">
+                    >
+                  </div>
+                  <input class="narrow_filter_search" type="text"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="narrowing_filter minimized">
+          <div class="narrowing_filter_title">
+            <span>Munition Part</span>
+            <button class="minimize-button"></button>
+          </div>
+          <div class="narrowing_filter_content">
+            <div class="gunmap-panel-list-wrapper">
+              <div class="gunmap-panel-list-wrapper-2">
+                <div class="gunmap-panel-list flex-column">
+                  <div class="gunmap-panel-list-item flex-column">
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_1">
+                      <label for="munition_part_1">Example 1</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_2">
+                      <label for="munition_part_2">Example 2</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_3">
+                      <label for="munition_part_3">Example 3</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_4">
+                      <label for="munition_part_4">Example 4</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_5">
+                      <label for="munition_part_5">Example 5</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_part_6">
+                      <label for="munition_part_6">Example 6</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="narrowing_filter_search gunmap-panel-input-wrapper text">
+              <div class="gunmap-panel-input-wrapper-2">
+                <div class="gunmap-panel-input-wrapper-3 flex-row">
+                  <div class="gunmap-panel-input-wrapper-pre">
+                    >
+                  </div>
+                  <input class="narrow_filter_search" type="text"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="narrowing_filter minimized">
+          <div class="narrowing_filter_title">
+            <span>Munition Caliber</span>
+            <button class="minimize-button"></button>
+          </div>
+          <div class="narrowing_filter_content">
+            <div class="gunmap-panel-list-wrapper">
+              <div class="gunmap-panel-list-wrapper-2">
+                <div class="gunmap-panel-list flex-column">
+                  <div class="gunmap-panel-list-item flex-column">
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_1">
+                      <label for="munition_caliber_1">Example 1</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_2">
+                      <label for="munition_caliber_2">Example 2</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_3">
+                      <label for="munition_caliber_3">Example 3</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_4">
+                      <label for="munition_caliber_4">Example 4</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_5">
+                      <label for="munition_caliber_5">Example 5</label>
+                    </span>
+                    <span class="narrowing_filter_option">
+                      <input type="checkbox" id="munition_caliber_6">
+                      <label for="munition_caliber_6">Example 6</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="narrowing_filter_search gunmap-panel-input-wrapper text">
+              <div class="gunmap-panel-input-wrapper-2">
+                <div class="gunmap-panel-input-wrapper-3 flex-row">
+                  <div class="gunmap-panel-input-wrapper-pre">
+                    >
+                  </div>
+                  <input class="narrow_filter_search" type="text"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+      </div>
+      <div id="filter_search">
+        <div class="gunmap-panel-input-wrapper text">
+          <div class="gunmap-panel-input-wrapper-2">
+            <div class="gunmap-panel-input-wrapper-3 flex-row">
+              <div class="gunmap-panel-input-wrapper-pre">
+                &nbsp;G >
+              </div>
+              <input type="text"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="filter_buttons" class="flex-row">
+        <div class="gunmap-panel-input-wrapper submit green">
+          <div class="gunmap-panel-input-wrapper-2">
+            <div class="gunmap-panel-input-wrapper-3">
+              <input id="search_button" type="submit" value="Go"></input>
+            </div>
+          </div>
+        </div>
+        <div class="gunmap-panel-input-wrapper submit">
+          <div class="gunmap-panel-input-wrapper-2">
+            <div class="gunmap-panel-input-wrapper-3">
+              <input id="clear_all_button" type="submit" value="Clear"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="results-panel" class="gunmap-panel noise">
+    <div class="gunmap-panel-header noise">
+      <div class="gunmap-panel-header-inner">
+        <span>RESULTS</span>
+        <div id="order_wrapper">
+          <select name="orderby" id="orderby">
+            <option selected id="orderby_created_desc" value="created desc">Created Date (New to Old)</option>
+            <option id="orderby_created_asc" value="created asc">Created Date (Old to New)</option>
+            <option id="orderby_title_desc" value="title desc">Title (A-Z)</option>
+            <option id="orderby_title_asc" value="title asc">Title (A-Z)</option>
+          </select>
+        </div>
+        <button id="share_url_button">Share View</button>
+      </div>
+    </div>
+    <div class="gunmap-panel-body">
+      <!--<a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>
+      <a href="project.html">
+        <div class="gunmap-subpanel">
+          <div class="gunmap-subpanel-title noise">King Cobra 9</div>
+          <div style="width: 200px; height: 200px; background-color: #fff;"></div>
+        </div>
+      </a>-->
+    </div>
+  </div>
+</div>
+{{ end }}

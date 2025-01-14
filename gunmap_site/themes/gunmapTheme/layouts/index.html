@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div id="homepage_wrapper">
+  <div id="gunmap_title">
+  &nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;____&nbsp;&nbsp;______&nbsp;&nbsp;&nbsp;&nbsp;____&nbsp;<br />
+  &nbsp;&nbsp;/&nbsp;____/&nbsp;/&nbsp;/&nbsp;/&nbsp;|&nbsp;/&nbsp;/&nbsp;&nbsp;|/&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;/&nbsp;__&nbsp;\<br />
+  &nbsp;/&nbsp;/&nbsp;__/&nbsp;/&nbsp;/&nbsp;/&nbsp;&nbsp;|/&nbsp;/&nbsp;/|_/&nbsp;/&nbsp;/|&nbsp;|&nbsp;/&nbsp;/_/&nbsp;/<br />
+  /&nbsp;/_/&nbsp;/&nbsp;/_/&nbsp;/&nbsp;/|&nbsp;&nbsp;/&nbsp;/&nbsp;&nbsp;/&nbsp;/&nbsp;___&nbsp;|/&nbsp;____/&nbsp;<br />
+  \____/\____/_/&nbsp;|_/_/&nbsp;&nbsp;/_/_/&nbsp;&nbsp;|_/_/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div id="search" class="gunmap-panel noise">
+    <div class="gunmap-panel-header noise">
+      <div class="gunmap-panel-header-inner">
+        Search
+      </div>
+    </div>
+    <div class="gunmap-panel-body">
+      <div class="gunmap-panel-input-wrapper text">
+        <div class="gunmap-panel-input-wrapper-2">
+          <div class="gunmap-panel-input-wrapper-3 flex-row">
+            <div class="gunmap-panel-input-wrapper-pre">
+              &nbsp;G >
+            </div>
+            <input id="frontpage_search_text" type="text"></input>
+          </div>
+        </div>
+      </div>
+      <div class="gunmap-panel-input-wrapper submit green">
+        <div class="gunmap-panel-input-wrapper-2">
+          <div class="gunmap-panel-input-wrapper-3">
+            <input id="frontpage_search" type="submit" value="Search"></input>
+          </div>
+        </div>
+      </div>
+      <div class="gunmap-panel-input-wrapper submit">
+        <div class="gunmap-panel-input-wrapper-2">
+          <div class="gunmap-panel-input-wrapper-3">
+            <a href="/entities/"><input type="submit" value="View All"></input></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="recent-items" class="gunmap-panel noise">
+  <div class="gunmap-panel-header noise">
+    <div class="gunmap-panel-header-inner">
+      Recent Items
+    </div>
+  </div>
+  <div class="gunmap-panel-body flex-row">
+    {{ range first 10 .Site.RegularPages.ByDate.Reverse }}
+      <a style="text-decoration: none;" href="{{ .RelPermalink }}">
+      <div class="gunmap-subpanel">
+        <div class="gunmap-subpanel-title noise">{{ .Title | truncate 28 "..." }}</div>
+        <div style="width: 355.55px; height: 200px; background-size: cover; background-position: center center; background-image: url('{{ .Params.thumbnail_url }}');" class="image"></div>
+      </div> 
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

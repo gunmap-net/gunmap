@@ -1,0 +1,15 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-us"
+title = "GUNMAP"
+theme = "gunmapTheme"
+[taxonomies]
+  authors = 'authors'
+  organizations = 'organizations'
+  gunmap_categories = 'gunmap_categories'
+  munition_types = 'munition_types'
+  munition_platforms = 'munition_platforms'
+  munition_parts = 'munition_parts'
+  munition_calibers = 'munition_calibers'
+  fabrication_methods = 'fabrication_methods'
+  diy_levels = 'diy_levels'
+  entity_formats = 'entity_formats'
